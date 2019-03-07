@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# npm
+node_modules
+.tmp
+.npm-debug-log
+
+# sass
+.sass-cache/
+
+# project
+builds
