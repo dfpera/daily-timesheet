@@ -1,0 +1,68 @@
+//- modules/_head.pug
+include _social-media
+
+//- Parameters: 
+//-   page: {
+//-    -title: A concise title for the related content. [Maximum 70 characters.]
+//-    -keywords: https://www.wordstream.com/meta-keyword
+//-    -description: A short description or summary of the object. [Maximum 200 characters.]
+//-    -img: The URL of the image for your object. It should be 1200x630 or larger is preferred (< 1MB, to adhere to twitter). Stay close to a 1.91:1 aspect ratio to avoid cropping.
+//-    -alt_text: An alternative image description for those who are visually impaired. [Few words]
+//-    -url: The canonical URL for your page. This should be the undecorated URL, without session variables, user identifying parameters, or counters.
+//-   }
+mixin head(page)
+  head
+    //- Meta
+    meta(charset='utf-8')
+    +social_media(
+      page.title,
+      page.description,
+      page.img,
+      page.alt_text,
+      page.url
+    )
+    meta(
+      name='viewport'
+      content='width=device-width, initial-scale=1'
+    )
+    meta(
+      name='robots'
+      content='index, follow'
+    )
+    meta(
+      name='keywords'
+      content=keywords
+    )
+    meta(
+      name='description'
+      content=page.description
+    )
+    //- Title, Icon and URL
+    title #{page.title} - DPera
+    link(
+      rel='canonical'
+      href=page.url
+    )
+    //- Styles
+    link(
+      rel='stylesheet'
+      href='/css/styles.css'
+    )
+    //- JavaScript
+    script(
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+      defer
+    )
+    script(
+      src='https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js'
+      defer
+    )
+    script(
+      src='/js/main.js'
+      defer
+    )
+    <!--[if lt IE 9]>
+      script(src='/lib/html5shiv.js')
+    <![endif]-->

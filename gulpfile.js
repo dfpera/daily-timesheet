@@ -134,8 +134,6 @@ gulp.task('lib-rl', ['lib'], reloadPage);
 gulp.task('pug-rl', ['pug'], reloadPage);
 
 gulp.task('watch', ['browserSync', 'img', 'js', 'lib', 'pug', 'sass'], function () {
-  gulp.watch(assetsSrc, ['assets-rl']);
-  gulp.watch(batSrc, ['bat-rl']);
   gulp.watch(imgSrc, ['img-rl']);
   gulp.watch(jsSrc, ['js-rl']);
   gulp.watch(libSrc, ['lib-rl']);

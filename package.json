@@ -1,7 +1,7 @@
 {
   "name": "daily-timesheet",
   "version": "1.0.0",
-  "description": "",
+  "description": "Small web application for submitting daily timesheets.",
   "main": "gulpfile.js",
   "directories": {
     "lib": "lib"

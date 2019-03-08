@@ -1,0 +1,21 @@
+//- index.pug
+include modules/_head
+include modules/_header
+include modules/_footer
+
+doctype html
+html(lang='en')
+  //- TODO: description, img, alt_text
+  +head({
+    title: 'Timesheet',
+    keywords: 'timesheet, cummul8, dpera, daniele, perazzolo, front, end, development, developer, assignment',
+    description: '',
+    img: '',
+    alt_text: '',
+    url: 'https://dpera.com/projects/timesheet'
+  })
+  body.parent
+    +header()
+    form.text-component
+
+      +footer()

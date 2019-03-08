@@ -1,0 +1,38 @@
+//- modules/_social-media.pug
+
+mixin social_media(title, description, image, alt_text, url)
+  //- Essential META Tags
+  meta(
+    property='og:title'
+    content=title
+  )
+  meta(
+    property='og:description'
+    content=description
+  )
+  meta(
+    property='og:image'
+    content=image
+  )
+  meta(
+    property='og:url'
+    content=url
+  )
+  meta(
+    property='og:type'
+    content='website'
+  )
+  meta(
+    name='twitter:card'
+    content='summary_large_image'
+  )
+
+  //- Non-Essential, But Recommended
+  meta(
+    property='og:site_name'
+    content='Sharper Edge Solutions'
+  )
+  meta(
+    name='twitter:image:alt'
+    content=alt_text
+  )
