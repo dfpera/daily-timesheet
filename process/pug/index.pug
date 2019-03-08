@@ -2,6 +2,7 @@
 include modules/_head
 include modules/_header
 include modules/_footer
+include modules/_form
 
 doctype html
 html(lang='en')
@@ -17,5 +18,46 @@ html(lang='en')
   body.parent
     +header()
     form.text-component
-
+      +generate_form_fields([
+        {
+          name: 'eaddr',
+          type: 'email',
+          placeholder: '',
+          max_length: 30
+        },
+        {
+          name: 'hours',
+          class: '',
+          type: 'number',
+          min: 0,
+          max: 24
+        },
+        {
+          name: 'minutes',
+          class: '',
+          type: 'number',
+          min: 0,
+          max: 59
+        },
+        {
+          name: 'message',
+          type: 'textarea',
+          placeholder: 'Message (optional):',
+          max_length: 1000,
+          min_length: 0
+        },
+        {
+          name: 'work',
+          type: 'label',
+          message: 'What type of work is this for?'
+        },
+        {
+          name: 'work',
+          type: 'radio',
+          choices: [
+            'Time working on bugs &amp; features',
+            'Time spent reviewing the work of a junior dev'
+          ]
+        }
+      ])
       +footer()

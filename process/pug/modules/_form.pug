@@ -1,0 +1,54 @@
+//- modules/_form.pug
+
+mixin generate_form_fields(fields)
+  fieldset
+    //- Honeypot input, reduces spam if link is externally accessible
+    input(
+      type='text'
+      id='email'
+      name='email'
+    )
+
+    each field in fields
+      - let classes = field.classes ? field.classes : ''
+      if field.type === 'email'
+        - let maxlength = field.max_length ? field.max_length : ''
+        - let minlength = field.min_length ? field.min_length : ''
+        - let placeholder = field.placeholder ? field.placeholder : ''
+        input(
+          type=field.type
+          id=field.name
+          name=field.name
+          minlength=minlength
+          maxlength=maxlength
+          placeholder=placeholder
+          class=classes
+        )
+      //- Not supported on IE9 and earlier
+      else if field.type === 'number'
+        - let max = field.max ? field.max : ''
+        - let min = field.min ? field.min : ''
+        input(
+          type=field.type
+          id=field.name
+          name=field.name
+          min=min
+          max=max
+          class=classes
+        )
+      else if field.type === 'textarea'
+        - let maxlength = field.max_length ? field.max_length : ''
+        - let minlength = field.min_length ? field.min_length : ''
+        - let placeholder = field.placeholder ? field.placeholder : ''
+        textarea(
+          id=field.name
+          name=field.name
+          minlength=minlength
+          maxlength=maxlength
+          placeholder=placeholder
+          class=classes
+        )
+      else if field.type === 'label'
+        label(for=field.name) #{message}
+      else if field.type === 'radio'
+        //- TODO: Radio buttons
