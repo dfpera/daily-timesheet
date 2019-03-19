@@ -11,6 +11,7 @@ mixin generate_form_fields(fields)
 
     each field in fields
       - let classes = field.classes ? field.classes : ''
+      //- EMAIL INPUT
       if field.type === 'email'
         - let maxlength = field.max_length ? field.max_length : ''
         - let minlength = field.min_length ? field.min_length : ''
@@ -24,6 +25,7 @@ mixin generate_form_fields(fields)
           placeholder=placeholder
           class=classes
         )
+      //- NUMBER INPUT
       //- Not supported on IE9 and earlier
       else if field.type === 'number'
         - let max = field.max ? field.max : ''
@@ -36,6 +38,7 @@ mixin generate_form_fields(fields)
           max=max
           class=classes
         )
+      //- TEXT AREA
       else if field.type === 'textarea'
         - let maxlength = field.max_length ? field.max_length : ''
         - let minlength = field.min_length ? field.min_length : ''
@@ -48,7 +51,16 @@ mixin generate_form_fields(fields)
           placeholder=placeholder
           class=classes
         )
+      //- LABELS
       else if field.type === 'label'
         label(for=field.name) #{message}
+      //- RADIO GROUPS
       else if field.type === 'radio'
-        //- TODO: Radio buttons
+        .radio(id=field.name)
+          each choice in field.choices
+            label
+              input(
+                type=field.type
+                name=field.name
+              )
+              | #{choice}

@@ -6,18 +6,46 @@ include modules/_form
 
 doctype html
 html(lang='en')
-  //- TODO: description, img, alt_text
+  //- TODO: description
   +head({
     title: 'Timesheet',
     keywords: 'timesheet, cummul8, dpera, daniele, perazzolo, front, end, development, developer, assignment',
     description: '',
-    img: '',
-    alt_text: '',
+    img: 'https://dpera.com/projects/timesheet/img/cumul8_logo.png',
+    alt_text: 'Cumul8 Logo',
     url: 'https://dpera.com/projects/timesheet'
   })
   body.parent
     +header()
-    form.text-component
+    form(
+      id=''
+      method='post'
+      action='bat/mail-handler.php'
+    ).form.text-component
+      .form--sub-in-progress
+        img(
+          src='img/throbber.gif'
+          alt='Submission Spinning Wheel'
+        )
+      .form--sub-success
+        img(
+          src='img/success_check.png'
+          alt='Successful Submission Checkmark'
+        )
+        p.form--sub-email Thank you 
+          span
+          | .
+        p.form--sub-time You have logged 
+          span
+          |  of work today.
+      .form--sub-error
+        img(
+          src='/img/error_cross.png'
+          alt='Failure to send Cross'
+        )
+        p Failed to submit hours, please try again or manually email your timesheet to 
+          //- TODO: Convert link to JS
+          a(href="mailto:example@cumul8.com?subject=[Timesheet Manual Submission] &body=Time: %0D%0A%0D%0AType of work: %0D%0A%0D%0AMessage: ") example@cumul8.com
       +generate_form_fields([
         {
           name: 'eaddr',
@@ -27,14 +55,14 @@ html(lang='en')
         },
         {
           name: 'hours',
-          class: '',
+          classes: '',
           type: 'number',
           min: 0,
           max: 24
         },
         {
           name: 'minutes',
-          class: '',
+          classes: '',
           type: 'number',
           min: 0,
           max: 59
@@ -55,7 +83,7 @@ html(lang='en')
           name: 'work',
           type: 'radio',
           choices: [
-            'Time working on bugs &amp; features',
+            'Time working on bugs & features',
             'Time spent reviewing the work of a junior dev'
           ]
         }
