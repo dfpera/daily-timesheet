@@ -53,7 +53,7 @@ mixin generate_form_fields(fields)
         )
       //- LABELS
       else if field.type === 'label'
-        label(for=field.name) #{message}
+        label(for=field.name) #{field.message}
       //- RADIO GROUPS
       else if field.type === 'radio'
         .radio(id=field.name)
@@ -62,5 +62,6 @@ mixin generate_form_fields(fields)
               input(
                 type=field.type
                 name=field.name
+                value=choice
               )
               | #{choice}

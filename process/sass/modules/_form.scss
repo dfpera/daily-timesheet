@@ -1,0 +1,33 @@
+.form {
+  width: 100%;
+
+
+  // Hide honeypot
+  input#email {
+    display: none;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .show {
+    display: block !important;
+  }
+
+  .form--state-input {
+
+  }
+
+  .form--state-in-progress {
+    display: none;
+  }
+
+  .form--state-error {
+    display: none;
+  }
+
+  .form--state-success {
+    display: none;
+  }
+}

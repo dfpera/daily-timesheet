@@ -2,19 +2,21 @@
 
 mixin footer()
   footer
-    .btns
+    .form--state-input
       input(
         type='reset'
         value='Clear'
-      )
+      ).form--state-
       input(
         type='submit'
         value='Submit'
       )
+    .form--state-error
       input(
         type='button'
         value='Try Again'
       )
+    .form--state-success
       input(
         type='button'
         value='Start Again'

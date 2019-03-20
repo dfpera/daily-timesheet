@@ -16,18 +16,17 @@ html(lang='en')
     url: 'https://dpera.com/projects/timesheet'
   })
   body.parent
-    +header()
     form(
-      id=''
       method='post'
       action='bat/mail-handler.php'
-    ).form.text-component
-      .form--sub-in-progress
+    )#timesheet.form.text-component
+      +header()
+      .form--state-in-progress
         img(
           src='img/throbber.gif'
           alt='Submission Spinning Wheel'
         )
-      .form--sub-success
+      .form--state-success
         img(
           src='img/success_check.png'
           alt='Successful Submission Checkmark'
@@ -38,20 +37,19 @@ html(lang='en')
         p.form--sub-time You have logged 
           span
           |  of work today.
-      .form--sub-error
+      .form--state-error
         img(
           src='/img/error_cross.png'
           alt='Failure to send Cross'
         )
         p Failed to submit hours, please try again or manually email your timesheet to 
-          //- TODO: Convert link to JS
-          a(href="mailto:example@cumul8.com?subject=[Timesheet Manual Submission] &body=Time: %0D%0A%0D%0AType of work: %0D%0A%0D%0AMessage: ") example@cumul8.com
+          a(href="mailto:example@cumul8.com?subject=[Timesheet Manual Submission] &body=Time: %0D%0A%0D%0AType of work: %0D%0A%0D%0AMessage: ").form--manual-email example@cumul8.com
       +generate_form_fields([
         {
           name: 'eaddr',
           type: 'email',
-          placeholder: '',
-          max_length: 30
+          placeholder: 'Email...',
+          max_length: 40
         },
         {
           name: 'hours',
