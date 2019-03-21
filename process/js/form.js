@@ -1,18 +1,20 @@
 'use strict';
 const EMAIL = 'example@cumul8.com'
 
-$(function() {
+$(() => {
   // Contact form
   var th = $("#timesheet");
 
-  $.validator.addMethod('timeCheck', function() {
+  // Method for making sure at least one type field is greater than 0.
+  $.validator.addMethod('timeCheck', () => {
     let hours = th.find('#hours').val();
     let minutes = th.find('#minutes').val();
     return 0 !== parseInt(hours) + parseInt(minutes);
   }, "* Time cannot be 0 hours and 0 minutes.");
 
+  // Form functionality using jQuery.validate
   th.validate({
-    submitHandler: function(form) {
+    submitHandler: (form) => {
       th.find('.form--state-in-progress').addClass('show');
 
       setTimeout(() => {
@@ -55,7 +57,7 @@ $(function() {
       }, 1000);
 
 
-
+      // Code for AJAX Submission
       // var formData = th.serialize();
 
       // // Submit the form using AJAX.
@@ -107,7 +109,7 @@ $(function() {
     groups: {
       key_valid_from: 'hours minutes'
     },
-    errorPlacement: function(error, element) {
+    errorPlacement: (error, element) => {
       if (element.attr('id') == 'hours' || element.attr('id') == 'minutes') {
         error.insertAfter('input#minutes');
       } else if (element.attr('name') == 'work') {
@@ -140,5 +142,15 @@ $(function() {
         required: '* You must select what the type of work.'
       }
     }
+  });
+
+  // Try Again and Start Again buttons for form
+  $('.form--state-error input[type="button"]').on('click', () => {
+    $('.form--state-error').removeClass('show');
+  });
+
+  $('.form--state-success input[type="button"]').on('click', () => {
+    th[0].reset();
+    $('.form--state-success').removeClass('show');
   });
 });
