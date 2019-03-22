@@ -16,6 +16,9 @@ mixin generate_form_fields(fields)
         - let maxlength = field.max_length ? field.max_length : ''
         - let minlength = field.min_length ? field.min_length : ''
         - let placeholder = field.placeholder ? field.placeholder : ''
+        label(
+          for=field.name
+        ) #{field.label}
         input(
           type=field.type
           id=field.name
@@ -43,6 +46,9 @@ mixin generate_form_fields(fields)
         - let maxlength = field.max_length ? field.max_length : ''
         - let minlength = field.min_length ? field.min_length : ''
         - let placeholder = field.placeholder ? field.placeholder : ''
+        label(
+          for=field.name
+        ) #{field.label}
         textarea(
           id=field.name
           name=field.name
@@ -56,7 +62,7 @@ mixin generate_form_fields(fields)
         label(for=field.name) #{field.message}
       //- RADIO GROUPS
       else if field.type === 'radio'
-        .radio(id=field.name)
+        .form--radio(id=field.name)
           each choice in field.choices
             label
               input(
@@ -64,4 +70,4 @@ mixin generate_form_fields(fields)
                 name=field.name
                 value=choice
               )
-              | #{choice}
+              span #{choice}

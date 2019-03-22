@@ -135,7 +135,8 @@ $(() => {
     messages: {
       eaddr: {
         required: '* Email cannot be blank.',
-        maxlength: jQuery.validator.format('* Email is too long (limit {0} characters).')
+        maxlength: jQuery.validator.format('* Email is too long (limit {0} characters).'),
+        email: '* Please enter a valid email.'
       },
       hours: {
         required: '* Hours cannot be blank.',
@@ -158,15 +159,20 @@ $(() => {
     }
   });
 
-  // Try Again and Start Again buttons for form
-  $('.form--state-error input[type="button"]').on('click', () => {
-    $('.form--state-error').removeClass('show');
-    $('.form--state-input').removeClass('hide');
+  // Try Again, Start Again and clear buttons for form
+  th.find('.form--state-error input[type="button"]').on('click', () => {
+    th.find('.form--state-error').removeClass('show');
+    th.find('.form--state-input').removeClass('hide');
   });
 
-  $('.form--state-success input[type="button"]').on('click', () => {
+  th.find('.form--state-success input[type="button"]').on('click', () => {
     th[0].reset();
-    $('.form--state-success').removeClass('show');
-    $('.form--state-input').removeClass('hide');
+    th.find('.form--valid').removeClass('form--valid');
+    th.find('.form--state-success').removeClass('show');
+    th.find('.form--state-input').removeClass('hide');
+  });
+
+  th.find('.form--state-input input[type="reset"]').on('click', () => {
+    th.find('.form--valid').removeClass('form--valid');
   });
 });
