@@ -73,7 +73,7 @@
         font-weight: bold;
 
         &:after {
-          content: url('/img/checkmark.svg');
+          content: url('../img/checkmark.svg');
           position: absolute;
           display: inline-block;
           color: var(--color-success-dark);

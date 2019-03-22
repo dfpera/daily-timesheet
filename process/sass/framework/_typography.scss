@@ -24,14 +24,14 @@
   --font-primary-capital-letter: 1;
 }
 
-@supports(--css: variables) {
-  @include breakpoint(md) {
-    body {
-      --text-base-size: 1.25em;
-      --text-scale-ratio: 1.25;
-    }
-  }
-}
+// @supports(--css: variables) {
+//   @include breakpoint(md) {
+//     body {
+//       --text-base-size: 1.25em;
+//       --text-scale-ratio: 1.25;
+//     }
+//   }
+// }
 
 body {
   font-size: var(--text-base-size);
