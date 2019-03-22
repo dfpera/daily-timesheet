@@ -22,6 +22,7 @@
     border: 0px solid;
     box-shadow: var(--shadow-inset-sm);
     margin-bottom: var(--space-md);
+    transition: cubic-bezier(0.39, 0.575, 0.565, 1) border-color 0.5s;
   }
 
   textarea {
@@ -45,6 +46,7 @@
     border-radius: var(--radius);
     box-shadow: var(--shadow-inset-sm);
     margin-bottom: var(--space-md);
+    transition: cubic-bezier(0.39, 0.575, 0.565, 1) border-color 0.5s;
 
     label {
       position: relative;
