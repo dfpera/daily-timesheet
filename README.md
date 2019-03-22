@@ -4,11 +4,13 @@
 [Requirements](#requirements)
 [Assumptions](#assumptions)
 [States](#states)
+
 * [Input](#input)
 * [Submission](#submission)
-* [Result](#result)
-[Taks](#task)
-[How To Run](#how_to_run)
+* [Results](#results)
+
+[Tasks](#tasks)
+[How To Run](#how-to-run)
 
 ## Goals
 * Submit daily timesheet to managers
@@ -70,4 +72,4 @@
 2. `cd` into the correct directory of the repository
 3. Run `npm install`
 4. Run `npm test`
-5. The project should have opened a new browser tab with the project running.
+5. The project should have opened a new browser tab with the project running
