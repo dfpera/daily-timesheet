@@ -6,6 +6,9 @@ footer {
   right: 0;
   width: 100%;
   padding: var(--space-md);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 
   .clear {
     flex: 1 1 auto;

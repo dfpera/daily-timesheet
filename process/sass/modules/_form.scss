@@ -1,4 +1,10 @@
 .form {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form {
   width: 100%;
   padding: var(--space-md);
 
@@ -54,6 +60,11 @@
         bottom: 0;
         right: 0;
         left: 0;
+      }
+
+      input:hover ~ span,
+      input:focus ~ span {
+        font-weight: bold;
       }
 
       input:checked ~ span {
