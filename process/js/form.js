@@ -1,16 +1,26 @@
 'use strict';
-const EMAIL = 'example@cumul8.com'
+const EMAIL = 'example@cumul8.com';
 
 $(() => {
   // Contact form
   var th = $("#timesheet");
 
   // Method for making sure at least one type field is greater than 0.
-  $.validator.addMethod('timeCheck', () => {
-    let hours = th.find('#hours').val();
-    let minutes = th.find('#minutes').val();
-    return 0 !== parseInt(hours) + parseInt(minutes);
+  $.validator.addMethod('maxTimeCheck', (value) => {
+    if (/^([0-9]?[0-9]|2[0-3])(:[0-5][0-9])$/.test(value)) {
+      let time = th.find('#time').val();
+      let hours = parseInt(time.split(':')[0]);
+      let minutes = parseInt(time.split(':')[1]);
+      return 0 !== hours + minutes;
+    } else {
+      return false;
+    }
   }, "* Time cannot be 0 hours and 0 minutes.");
+
+  // Method for validating the time format
+  $.validator.addMethod("time24", function(value) {
+    return /^([0-9]?[0-9]|2[0-3])(:[0-5][0-9])$/.test(value);
+  }, "* Invalid time format.");
 
   // Form functionality using jQuery.validate
   th.validate({
@@ -21,8 +31,9 @@ $(() => {
 
       setTimeout(() => {
         let email = th.find('#eaddr').val();
-        let hours = th.find('#hours').val();
-        let minutes = th.find('#minutes').val();
+        let time = th.find('#time').val();
+        let hours = time.split(':')[0];
+        let minutes = time.split(':')[1];
         let message = th.find('#message').val();
         let work = th.find('#work input[name="work"]:checked').val();
 
@@ -99,19 +110,11 @@ $(() => {
         required: true,
         maxlength: 40
       },
-      hours: {
+      time: {
         required: true,
-        min: 0,
-        max: 24,
-        digits: true,
-        timeCheck: true
-      },
-      minutes: {
-        required: true,
-        min: 0,
-        max: 59,
-        digits: true,
-        timeCheck: true
+        time24: true,
+        maxTimeCheck: true,
+        maxlength: 5
       },
       message: {
         maxlength: 1000
@@ -120,16 +123,11 @@ $(() => {
         required: true
       }
     },
-    groups: {
-      key_valid_from: 'hours minutes'
-    },
     errorPlacement: (error, element) => {
-      if (element.attr('id') == 'hours' || element.attr('id') == 'minutes') {
-        error.insertAfter('input#minutes');
-      } else if (element.attr('name') == 'work') {
+      if (element.attr('name') == 'work') {
         error.insertBefore('#work');
       } else {
-        error.insertAfter(element);
+        error.insertBefore(element);
       }
     },
     messages: {
@@ -138,23 +136,15 @@ $(() => {
         maxlength: jQuery.validator.format('* Email is too long (limit {0} characters).'),
         email: '* Please enter a valid email.'
       },
-      hours: {
-        required: '* Hours cannot be blank.',
-        min: '* Hours cannot be negative.',
-        max: jQuery.validator.format('* Hours cannot exceed {0}.'),
-        digits: '* Must be a number.'
-      },
-      minutes: {
-        required: '* Minutes cannot be blank.',
-        min: '* Minutes cannot be negative.',
-        max: jQuery.validator.format('* Minutes cannot exceed {0}.'),
-        digits: '* Must be a number.'
+      time: {
+        required: '* Time cannot be blank',
+        maxlength: jQuery.validator.format('* Time is too long (limit {0} characters).')
       },
       message: {
         maxlength: jQuery.validator.format('* Message is too long (limit {0} characters).')
       },
       work: {
-        required: '* You must select what the type of work.'
+        required: '* You must select the type of work.'
       }
     }
   });

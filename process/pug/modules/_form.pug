@@ -28,8 +28,27 @@ mixin generate_form_fields(fields)
           placeholder=placeholder
           class=classes
         )
+      //- TEXT INPUT
+      else if field.type === 'text'
+        - let maxlength = field.max_length ? field.max_length : ''
+        - let minlength = field.min_length ? field.min_length : ''
+        - let placeholder = field.placeholder ? field.placeholder : ''
+        - let pattern = field.pattern ? field.pattern : ''
+        label(
+          for=field.name
+        ) #{field.label}
+        br
+        input(
+          type=field.type
+          id=field.name
+          name=field.name
+          minlength=minlength
+          maxlength=maxlength
+          class=classes
+          pattern=field.pattern
+          placeholder=placeholder
+        )
       //- NUMBER INPUT
-      //- Not supported on IE9 and earlier
       else if field.type === 'number'
         - let max = field.max ? field.max : ''
         - let min = field.min ? field.min : ''
