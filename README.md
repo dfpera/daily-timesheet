@@ -11,6 +11,7 @@
 
 [Tasks](#tasks)
 [How To Run](#how-to-run)
+[Citations](#citations)
 
 ## Goals
 * Submit daily timesheet to managers
@@ -73,3 +74,9 @@
 3. Run `npm install`
 4. Run `npm test`
 5. The project should have opened a new browser tab with the project running
+
+## Citations
+* CSS Framework - [CodyHouse](https://codyhouse.co/)
+* Icons [FreePik](https://www.freepik.com)
+* [jQuery](https://jquery.com/)
+* Form Validation [jQuery.Validate()](https://jqueryvalidation.org/)
