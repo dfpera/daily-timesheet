@@ -1,5 +1,6 @@
 .form {
   width: 100%;
+  padding: var(--space-md);
 
 
   // Hide honeypot
@@ -15,12 +16,54 @@
     display: block !important;
   }
 
+  .hide {
+    display: none !important;
+  }
+
   .form--state-input {
 
   }
 
   .form--state-in-progress {
     display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // TODO: Move color to colors.scss
+    background-color: rgba(44, 53, 61, 0.8);
+    z-index: var(--zindex-overlay);
+    text-align: center;
+
+    img {
+      display: inline-block;
+      width: 5em;
+    }
+
+    p {
+      color: var(--color-white);
+      letter-spacing: 1px;
+      font-family: var(--font-secondary);
+      font-weight: 300;
+    }
+  }
+
+  .form--result {
+    text-align: center;
+
+    img {
+      display: inline-block;
+      width: 10em;
+      max-width: 60%;
+      padding-bottom: var(--space-lg);
+    }
+
+    p {
+      font-size: var(--text-md);
+      font-family: var(--font-secondary);
+      font-weight: 300;
+    }
   }
 
   .form--state-error {

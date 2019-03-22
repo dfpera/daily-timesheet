@@ -1,0 +1,16 @@
+footer {
+  position: fixed;
+  z-index: --zindex-fixed-element;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: var(--space-md);
+
+  .clear {
+    flex: 1 1 auto;
+  }
+  .submit {
+    flex: 4 1 auto;
+  }
+}

@@ -14,6 +14,8 @@ $(() => {
 
   // Form functionality using jQuery.validate
   th.validate({
+    validClass: "form--valid",
+    errorClass: "form--invalid",
     submitHandler: (form) => {
       th.find('.form--state-in-progress').addClass('show');
 
@@ -31,7 +33,6 @@ $(() => {
             (hours == 0 && minutes == 2) ||
             (hours == 13 && minutes == 0)
           ) {
-          th.find('.form--state-error').addClass('show');
           // Set mailto link
           let mailto_link = 'mailto:' + EMAIL + '?subject=[Timesheet Manual Submission] ';
           // Append hours and minutes
@@ -46,11 +47,24 @@ $(() => {
 
           // Set new mailto link
           th.find('a.form--manual-email').attr('href', mailto_link)
+
+          // Hide input and show error
+          th.find('.form--state-input').addClass('hide');
+          th.find('.form--state-error').addClass('show');
         
         // Otherwise show success UI
         } else {
+          // Set success UI to submitted data
+          th.find('.form--sub-email span').html(email);
+
+          let time_string = (hours != 0) ? hours+'h ' : '';
+          time_string += (hours != 0 && minutes != 0) ? 'and ' : '';
+          time_string += (minutes != 0) ? minutes+'m ' : '';
+          th.find('.form--sub-time span').html(time_string);
+
+          // Hide input and show success
+          th.find('.form--state-input').addClass('hide');
           th.find('.form--state-success').addClass('show');
-          console.log('success');
         }
 
         th.find('.form--state-in-progress').removeClass('show');
@@ -147,10 +161,12 @@ $(() => {
   // Try Again and Start Again buttons for form
   $('.form--state-error input[type="button"]').on('click', () => {
     $('.form--state-error').removeClass('show');
+    $('.form--state-input').removeClass('hide');
   });
 
   $('.form--state-success input[type="button"]').on('click', () => {
     th[0].reset();
     $('.form--state-success').removeClass('show');
+    $('.form--state-input').removeClass('hide');
   });
 });

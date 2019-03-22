@@ -1,0 +1,14 @@
+header {
+  text-align: center;
+  padding-bottom: var(--space-md);
+
+  img {
+    display: inline-block;
+    margin: var(--space-lg) 0 0;
+  }
+
+  h1 {
+    font-size: var(--text-xl);
+    letter-spacing: 1px;
+  }
+}

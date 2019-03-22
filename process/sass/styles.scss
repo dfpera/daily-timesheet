@@ -1,8 +1,18 @@
+/* ==== FONTS ==== */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300|Roboto');
+/* ==== END FONTS ==== */
+
 /* ==== FRAMEWORK ==== */
 @import 'framework';
 /* ==== END FRAMEWORK ==== */
 
+/* ==== BASE ==== */
+@import 'base';
+/* ==== END BASE ==== */
+
 /* ==== MODULES ==== */
 @import 'modules/grid';
+@import 'modules/header';
+@import 'modules/footer';
 @import 'modules/form';
 /* ==== END MODULES ==== */

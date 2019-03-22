@@ -1,6 +1,7 @@
 :root, body {
   // font family
-  --font-primary: sans-serif;
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Mantserraf', sans-serif;
 
   // body font size
   --text-base-size: 1em;
@@ -35,12 +36,14 @@
 body {
   font-size: var(--text-base-size);
   font-family: var(--font-primary);
-  color: var(--color-contrast-high);
+  color: var(--color-white);
 }
 
 h1, h2, h3, h4 {
-  color: var(--color-contrast-higher);
+  color: var(--color-white);
   line-height: var(--heading-line-height);
+  font-family: var(--font-secondary);
+  font-weight: 300;
 }
 
 // text size
@@ -116,7 +119,7 @@ u {
 
   p, blockquote, ul li, ol li {
     line-height: var(--component-body-line-height);
-    color: var(--color-contrast-high);
+    color: var(--color-white);
   }
   
   ul, ol, p, blockquote {

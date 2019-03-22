@@ -1,0 +1,16 @@
+body {
+  background-color: #2C353D; // TODO: Add to color scss
+  background-image: url('/img/gold_gear.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.center-div {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+}

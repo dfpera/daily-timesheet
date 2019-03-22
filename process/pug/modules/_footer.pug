@@ -2,22 +2,24 @@
 
 mixin footer()
   footer
-    .form--state-input
-      input(
-        type='reset'
-        value='Clear'
-      ).form--state-
-      input(
-        type='submit'
-        value='Submit'
-      )
+    .form--state-input.grid.grid-gap--md
+      .clear
+        input(
+          type='reset'
+          value='Clear'
+        ).btn.btn--accent
+      .submit
+        input(
+          type='submit'
+          value='Submit Timesheet'
+        ).btn.btn--primary
     .form--state-error
       input(
         type='button'
         value='Try Again'
-      )
+      ).btn.btn--primary
     .form--state-success
       input(
         type='button'
-        value='Start Again'
-      )
+        value='Enter Another Timesheet'
+      ).btn.btn--primary
