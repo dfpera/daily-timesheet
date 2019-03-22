@@ -1,8 +1,11 @@
 # Cumul8 Front-end Assignment
 ## Contents
 [Goals](#goals)
+
 [Requirements](#requirements)
+
 [Assumptions](#assumptions)
+
 [States](#states)
 
 * [Input](#input)
@@ -10,7 +13,9 @@
 * [Results](#results)
 
 [Tasks](#tasks)
+
 [How To Run](#how-to-run)
+
 [Citations](#citations)
 
 ## Goals
